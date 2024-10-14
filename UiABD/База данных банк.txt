@@ -1,0 +1,47 @@
+create table klient(
+id_klient int primary key,
+FIO_clietny varchar(40),
+Adress Varchar(40),
+phone varchar(30)
+);
+
+create table chet(
+id_chet int primary key,
+num_chet varchar(40),
+id_klient int,
+FOREIGN KEY (id_klient ) references klient(id_klient ),
+valute varchar(50),
+balacnce Varchar(30)
+);
+
+create table tranzhak(
+id_tranzhak int primary key,
+id_chet int,
+data_tranzak date,
+summa int,
+type_tran varchar(30),
+FOREIGN KEY (id_chet ) references chet(id_chet)
+);
+
+create table kredit(
+id_kredit int primary key,
+id_chet int,
+summa int,
+prochent_stavki int,
+srok_kredita int,
+FOREIGN KEY (id_chet ) references chet(id_chet )
+);
+
+create table depozit(
+id_depozit int primary key,
+id_chet int,
+foreign key (id_chet) references chet(id_chet),
+prochent_stavki int,
+srod_depozid int
+);
+
+create table valuta(
+id_valuta int primary key,
+name varchar(40),
+kyrc int
+);
